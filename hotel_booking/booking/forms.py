@@ -23,7 +23,6 @@ class BookingForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Используем виджет DateInput с атрибутом type="date"
         self.fields['check_in'].widget = forms.DateInput(attrs={'type': 'date'})
         self.fields['check_out'].widget = forms.DateInput(attrs={'type': 'date'})
 
@@ -36,10 +35,9 @@ class BookingForm(forms.ModelForm):
         return check_in
 
     def clean_check_out(self):
-        check_in = self.cleaned_data.get('check_in')  # Получаем значение check_in
+        check_in = self.cleaned_data.get('check_in')
         check_out = self.cleaned_data.get('check_out')
 
-        # Проверяем, что оба поля имеют значения перед сравнением
         if check_in is None or check_out is None:
             raise ValidationError("Обе даты, заезда и выезда, должны быть указаны.")
 
