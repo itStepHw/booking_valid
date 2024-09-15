@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h2>Отменить бронирование</h2>
+    <p>Вы уверены, что хотите отменить бронирование номера {{ booking.room.room_number }} с {{ booking.check_in }} по {{ booking.check_out }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Отменить бронирование</button>
+        <a href="{% url 'booking_list' %}">Отмена</a>
+    </form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h2>Мои бронирования</h2>
+    <ul>
+        {% for booking in bookings %}
+            <li>
+                Номер {{ booking.room.room_number }} - 
+                С {{ booking.check_in }} по {{ booking.check_out }}
+                <form action="{% url 'booking_cancel' booking.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Отменить</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

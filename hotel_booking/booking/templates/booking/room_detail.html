@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h2>Детали номера {{ room.room_number }}</h2>
+    <img src="{{ room.photo.url }}" alt="Фото номера" style="max-width: 300px;">
+    <p>Тип: {{ room.room_type }}</p>
+    <p>Цена за ночь: {{ room.price_per_night }} ₽</p>
+    <p>Описание: {{ room.description }}</p>
+    
+    <h3>Доступные бронирования</h3>
+    <a href="{% url 'booking_create' %}">Забронировать этот номер</a>
+
+    <div>
+        <a href="{% url 'room_update' room.pk %}">Редактировать</a> |
+        <a href="{% url 'room_delete' room.pk %}">Удалить</a>
+    </div>
+{% endblock %}

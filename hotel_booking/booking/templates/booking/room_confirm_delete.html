@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h2>Удалить номер {{ room.room_number }}</h2>
+    <p>Вы уверены, что хотите удалить этот номер?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+        <a href="{% url 'room_detail' room.pk %}">Отмена</a>
+    </form>
+{% endblock %}
